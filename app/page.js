@@ -95,11 +95,11 @@ export default function Dashboard() {
         metaOverview={metaOverview}
         onNavigate={navTo}
       />
-      <div className="main">
+      <div className="main main-content">
         {view !== 'account' && view !== 'group' && view !== 'ghl-location' && view !== 'meta-account' && view !== 'intelligence' && (
-          <div className="header">
-            <h1>{pageTitle}</h1>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginLeft: 'auto' }}>
+          <div className="header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <h1 style={{ textAlign: 'left' }}>{pageTitle}</h1>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
             <select
               className="week-select"
               value={selectedRange || 'last-week'}
@@ -144,6 +144,7 @@ export default function Dashboard() {
           </div>
         )}
 
+        <div className="page-enter">
         {view === 'overview' && (
           <OverviewPage
             data={overview}
@@ -196,6 +197,7 @@ export default function Dashboard() {
             onBack={() => navTo('leads')}
           />
         )}
+        </div>
         <ChatWidget />
       </div>
     </div>

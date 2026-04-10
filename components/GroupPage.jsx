@@ -64,7 +64,7 @@ export default function GroupPage({ groupId, ghlData, onBack, onSelectAccount })
               <XAxis dataKey="week" stroke="#8b8fa3" fontSize={11} />
               <YAxis stroke="#8b8fa3" fontSize={11} />
               <Tooltip contentStyle={tooltipStyle} />
-              <Bar dataKey="spend" fill="#6366f1" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="spend" fill="#6EC1E4" radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -77,7 +77,7 @@ export default function GroupPage({ groupId, ghlData, onBack, onSelectAccount })
               <YAxis yAxisId="left" stroke="#8b8fa3" fontSize={11} />
               <YAxis yAxisId="right" orientation="right" stroke="#8b8fa3" fontSize={11} />
               <Tooltip contentStyle={tooltipStyle} />
-              <Line yAxisId="left" type="monotone" dataKey="conversions" stroke="#22c55e" strokeWidth={2} dot={{ r: 3 }} />
+              <Line yAxisId="left" type="monotone" dataKey="conversions" stroke="#8AC245" strokeWidth={2} dot={{ r: 3 }} />
               <Line yAxisId="right" type="monotone" dataKey="cpa" stroke="#f97316" strokeWidth={2} dot={{ r: 3 }} />
             </LineChart>
           </ResponsiveContainer>
@@ -95,7 +95,7 @@ export default function GroupPage({ groupId, ghlData, onBack, onSelectAccount })
               <th>Clicks</th>
               <th>Conv</th>
               <th>CPA</th>
-              <th style={{ borderLeft: '2px solid #6366f1' }}>Ad Leads</th>
+              <th style={{ borderLeft: '2px solid #6EC1E4' }}>Ad Leads</th>
               <th>Booked</th>
               <th>Closed</th>
             </tr>
@@ -112,7 +112,7 @@ export default function GroupPage({ groupId, ghlData, onBack, onSelectAccount })
                   <td>{fmt(latest.clicks)}</td>
                   <td>{fmt(latest.conversions, 1)}</td>
                   <td>{lCpa != null ? fmtCurrency(lCpa) : 'N/A'}</td>
-                  <td style={{ borderLeft: '2px solid #6366f1' }}>{fmt(ghl.adLeads || 0)}</td>
+                  <td style={{ borderLeft: '2px solid #6EC1E4' }}>{fmt(ghl.adLeads || 0)}</td>
                   <td>{fmt(ghl.booked || 0)}</td>
                   <td>{fmt(ghl.stages ? ghl.stages['Closed'] || 0 : 0)}</td>
                 </tr>

@@ -75,7 +75,6 @@ export default function ChatWidget() {
     if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); }
   }
 
-  // Closed state: floating button
   if (!open) {
     return (
       <button
@@ -83,11 +82,14 @@ export default function ChatWidget() {
         style={{
           position: 'fixed', bottom: 24, right: 24, width: 56, height: 56,
           borderRadius: '50%', border: 'none', cursor: 'pointer',
-          background: 'linear-gradient(135deg, #6366f1, #8b5cf6)',
+          background: 'linear-gradient(135deg, #8AC245, #6EC1E4)',
           color: '#fff', fontSize: 24, zIndex: 9999,
-          boxShadow: '0 4px 20px rgba(99,102,241,0.4)',
-          display: 'flex', alignItems: 'center', justifyContent: 'center'
+          boxShadow: '0 4px 20px rgba(138,194,69,0.35)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          transition: 'transform 0.2s ease, box-shadow 0.2s ease'
         }}
+        onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.08)'; e.currentTarget.style.boxShadow = '0 6px 28px rgba(138,194,69,0.5)'; }}
+        onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = '0 4px 20px rgba(138,194,69,0.35)'; }}
       >
         {'\uD83D\uDCAC'}
       </button>
@@ -99,9 +101,9 @@ export default function ChatWidget() {
       return (
         <div key={i} style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: 8 }}>
           <div style={{
-            background: '#6366f1', color: '#fff', padding: '8px 14px',
+            background: '#8AC245', color: '#0A0A0A', padding: '8px 14px',
             borderRadius: '16px 16px 4px 16px', maxWidth: '80%',
-            fontSize: 13, lineHeight: '1.5'
+            fontSize: 13, lineHeight: '1.5', fontWeight: 600
           }}>{m.text}</div>
         </div>
       );
@@ -111,7 +113,7 @@ export default function ChatWidget() {
       return (
         <div key={i} style={{ display: 'flex', justifyContent: 'flex-start', marginBottom: 8 }}>
           <div style={{
-            background: '#1e1e2e', color: '#e2e8f0', padding: '8px 14px',
+            background: '#1A1A1A', color: 'rgba(255,255,255,0.85)', padding: '8px 14px',
             borderRadius: '16px 16px 16px 4px', maxWidth: '80%',
             fontSize: 13, lineHeight: '1.5', whiteSpace: 'pre-wrap'
           }}>{m.text}</div>
@@ -122,29 +124,29 @@ export default function ChatWidget() {
     if (m.role === 'action') {
       return (
         <div key={i} style={{
-          background: '#1a1a2e', border: '1px solid #6366f1',
+          background: '#111111', border: '1px solid #2A2A2A',
           borderRadius: 12, padding: 12, marginBottom: 8
         }}>
-          <div style={{ color: '#a5b4fc', fontWeight: 600, fontSize: 13, marginBottom: 4 }}>
+          <div style={{ color: '#6EC1E4', fontWeight: 600, fontSize: 13, marginBottom: 4 }}>
             {'\u26A1'} {m.action.title}
           </div>
-          <div style={{ color: '#94a3b8', fontSize: 12, marginBottom: 8 }}>
+          <div style={{ color: 'rgba(255,255,255,0.55)', fontSize: 12, marginBottom: 8 }}>
             {m.action.description}
           </div>
           <div style={{ display: 'flex', gap: 8 }}>
             <button
               onClick={() => confirm(m)}
               style={{
-                background: '#22c55e', color: '#fff', border: 'none',
-                borderRadius: 6, padding: '5px 12px', fontSize: 12,
-                cursor: 'pointer', fontWeight: 600
+                background: '#8AC245', color: '#0A0A0A', border: 'none',
+                borderRadius: 25, padding: '5px 14px', fontSize: 12,
+                cursor: 'pointer', fontWeight: 600, letterSpacing: '0.5px'
               }}
             >Confirm &amp; Execute</button>
             <button
               onClick={() => dismiss(m.action.actionId)}
               style={{
-                background: 'transparent', color: '#64748b', border: '1px solid #334155',
-                borderRadius: 6, padding: '5px 12px', fontSize: 12,
+                background: 'transparent', color: 'rgba(255,255,255,0.4)', border: '1px solid #2A2A2A',
+                borderRadius: 25, padding: '5px 14px', fontSize: 12,
                 cursor: 'pointer'
               }}
             >Dismiss</button>
@@ -156,7 +158,7 @@ export default function ChatWidget() {
     if (m.role === 'error') {
       return (
         <div key={i} style={{
-          background: 'rgba(239,68,68,0.1)', color: '#f87171',
+          background: 'rgba(229,77,77,0.1)', color: '#E54D4D',
           padding: '8px 12px', borderRadius: 8, fontSize: 12, marginBottom: 8
         }}>{m.text}</div>
       );
@@ -165,7 +167,7 @@ export default function ChatWidget() {
     if (m.role === 'system') {
       return (
         <div key={i} style={{
-          background: 'rgba(34,197,94,0.1)', color: '#4ade80',
+          background: 'rgba(138,194,69,0.1)', color: '#8AC245',
           padding: '8px 12px', borderRadius: 8, fontSize: 12, marginBottom: 8
         }}>{m.text}</div>
       );
@@ -174,41 +176,38 @@ export default function ChatWidget() {
     return null;
   }
 
-  // Open panel
   return (
     <div style={{
       position: 'fixed', bottom: 24, right: 24, width: 380, height: 520,
-      background: '#0f0f1a', border: '1px solid #1e1e3a',
+      background: '#0A0A0A', border: '1px solid #2A2A2A',
       borderRadius: 16, zIndex: 9999, display: 'flex', flexDirection: 'column',
-      boxShadow: '0 8px 40px rgba(0,0,0,0.5)', fontFamily: 'system-ui, sans-serif'
+      boxShadow: '0 8px 40px rgba(0,0,0,0.6)', fontFamily: 'Urbanist, sans-serif'
     }}>
-      {/* Header */}
       <div style={{
-        padding: '14px 16px', borderBottom: '1px solid #1e1e3a',
+        padding: '14px 16px', borderBottom: '1px solid #2A2A2A',
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        background: 'linear-gradient(135deg, rgba(99,102,241,0.15), rgba(139,92,246,0.1))',
+        background: 'linear-gradient(135deg, rgba(138,194,69,0.08), rgba(110,193,228,0.06))',
         borderRadius: '16px 16px 0 0'
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#22c55e' }} />
-          <span style={{ color: '#e2e8f0', fontWeight: 700, fontSize: 14 }}>Streben AI</span>
+          <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#8AC245' }} />
+          <span style={{ color: '#fff', fontWeight: 700, fontSize: 14, letterSpacing: '1px' }}>Streben AI</span>
         </div>
         <button
           onClick={() => setOpen(false)}
           style={{
-            background: 'none', border: 'none', color: '#64748b',
+            background: 'none', border: 'none', color: 'rgba(255,255,255,0.4)',
             fontSize: 20, cursor: 'pointer', padding: '0 4px', lineHeight: 1
           }}
         >{'\u00D7'}</button>
       </div>
 
-      {/* Messages area */}
       <div style={{ flex: 1, overflowY: 'auto', padding: 16 }}>
         {messages.length === 0
           ? (
-            <div style={{ color: '#64748b', fontSize: 13, textAlign: 'center', marginTop: 40 }}>
+            <div style={{ color: 'rgba(255,255,255,0.4)', fontSize: 13, textAlign: 'center', marginTop: 40 }}>
               <div style={{ fontSize: 28, marginBottom: 8 }}>{'\uD83E\uDD16'}</div>
-              <div style={{ fontWeight: 600, marginBottom: 4 }}>Ask me anything about your accounts</div>
+              <div style={{ fontWeight: 600, marginBottom: 4, color: 'rgba(255,255,255,0.6)' }}>Ask me anything about your accounts</div>
               <div style={{ fontSize: 12 }}>I can analyze performance, find negatives, adjust budgets, and more.</div>
             </div>
           )
@@ -216,17 +215,16 @@ export default function ChatWidget() {
         }
         {loading && (
           <div style={{ display: 'flex', gap: 4, padding: '8px 0' }}>
-            <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#6366f1', animation: 'pulse 1s infinite' }} />
-            <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#6366f1', animation: 'pulse 1s infinite 0.2s' }} />
-            <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#6366f1', animation: 'pulse 1s infinite 0.4s' }} />
+            <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#8AC245', animation: 'pulse 1s infinite' }} />
+            <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#8AC245', animation: 'pulse 1s infinite 0.2s' }} />
+            <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#8AC245', animation: 'pulse 1s infinite 0.4s' }} />
           </div>
         )}
         <div ref={endRef} />
       </div>
 
-      {/* Input area */}
       <div style={{
-        padding: '12px 16px', borderTop: '1px solid #1e1e3a',
+        padding: '12px 16px', borderTop: '1px solid #2A2A2A',
         display: 'flex', gap: 8, alignItems: 'flex-end'
       }}>
         <textarea
@@ -236,21 +234,23 @@ export default function ChatWidget() {
           placeholder="Ask about your accounts..."
           rows={1}
           style={{
-            flex: 1, background: '#1a1a2e', border: '1px solid #2d2d4a',
-            borderRadius: 10, padding: '10px 12px', color: '#e2e8f0',
+            flex: 1, background: '#111111', border: '1px solid #2A2A2A',
+            borderRadius: 10, padding: '10px 12px', color: '#fff',
             fontSize: 13, resize: 'none', outline: 'none',
-            fontFamily: 'inherit', lineHeight: '1.4'
+            fontFamily: 'inherit', lineHeight: '1.4', letterSpacing: '0.5px'
           }}
         />
         <button
           onClick={send}
           disabled={loading || !input.trim()}
           style={{
-            background: (loading || !input.trim()) ? '#334155' : '#6366f1',
-            color: '#fff', border: 'none', borderRadius: 10,
+            background: (loading || !input.trim()) ? '#1A1A1A' : '#8AC245',
+            color: (loading || !input.trim()) ? 'rgba(255,255,255,0.3)' : '#0A0A0A',
+            border: 'none', borderRadius: 10,
             width: 36, height: 36, cursor: 'pointer',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            fontSize: 16, flexShrink: 0
+            fontSize: 16, flexShrink: 0, fontWeight: 700,
+            transition: 'background 0.2s ease'
           }}
         >{'\u27A4'}</button>
       </div>

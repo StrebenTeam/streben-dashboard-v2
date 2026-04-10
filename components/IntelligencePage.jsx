@@ -31,9 +31,9 @@ export default function IntelligencePage() {
 
   if (loading) return <div style={{ padding: 40, textAlign: 'center', color: 'var(--text-dim)' }}>Loading intelligence data...</div>;
 
-  const sevColors = { critical: '#ef4444', warning: '#f59e0b', opportunity: '#22c55e', info: '#3b82f6' };
+  const sevColors = { critical: '#ef4444', warning: '#f59e0b', opportunity: '#8AC245', info: '#3b82f6' };
   const sevBg = { critical: 'rgba(239,68,68,0.06)', warning: 'rgba(245,158,11,0.06)', opportunity: 'rgba(34,197,94,0.06)', info: 'rgba(59,130,246,0.06)' };
-  const gradeColors = { A: '#22c55e', B: '#84cc16', C: '#f59e0b', D: '#f97316', F: '#ef4444' };
+  const gradeColors = { A: '#8AC245', B: '#84cc16', C: '#f59e0b', D: '#f97316', F: '#ef4444' };
 
   // Tab bar
   const tabBar = (
@@ -202,7 +202,7 @@ export default function IntelligencePage() {
                         <div key={key} style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
                           <div style={{ width: 100, fontSize: 11, color: 'var(--text-dim)' }}>{labels[key] || key}</div>
                           <div style={{ flex: 1, height: 6, borderRadius: 3, background: 'var(--border)', overflow: 'hidden' }}>
-                            <div style={{ height: '100%', width: val + '%', borderRadius: 3, background: val >= 70 ? '#22c55e' : val >= 40 ? '#f59e0b' : '#ef4444' }} />
+                            <div style={{ height: '100%', width: val + '%', borderRadius: 3, background: val >= 70 ? '#8AC245' : val >= 40 ? '#f59e0b' : '#ef4444' }} />
                           </div>
                           <div style={{ width: 30, fontSize: 11, color: 'var(--text-dim)', textAlign: 'right' }}>{val}</div>
                         </div>
@@ -215,11 +215,11 @@ export default function IntelligencePage() {
                         {a.trends.insights.map((ins, idx) => (
                           <div
                             key={'g' + idx}
-                            style={{ fontSize: 12, color: 'var(--text-dim)', marginBottom: 8, paddingLeft: 10, borderLeft: '2px solid ' + (ins.direction === 'improving' || ins.direction === 'falling' || ins.direction === 'growing' ? '#22c55e' : ins.type === 'plateau' ? '#f59e0b' : '#ef4444') }}
+                            style={{ fontSize: 12, color: 'var(--text-dim)', marginBottom: 8, paddingLeft: 10, borderLeft: '2px solid ' + (ins.direction === 'improving' || ins.direction === 'falling' || ins.direction === 'growing' ? '#8AC245' : ins.type === 'plateau' ? '#f59e0b' : '#ef4444') }}
                           >
                             <div style={{ fontWeight: 500, color: 'var(--text)' }}>{ins.title}</div>
                             <div style={{ marginTop: 2 }}>{ins.description}</div>
-                            <div style={{ marginTop: 4, color: '#22c55e', fontSize: 11 }}>{ins.action}</div>
+                            <div style={{ marginTop: 4, color: '#8AC245', fontSize: 11 }}>{ins.action}</div>
                           </div>
                         ))}
                         {a.metaTrends.insights.map((ins, idx) => (
@@ -229,7 +229,7 @@ export default function IntelligencePage() {
                           >
                             <div style={{ fontWeight: 500, color: 'var(--text)' }}>[Meta] {ins.title}</div>
                             <div style={{ marginTop: 2 }}>{ins.description}</div>
-                            <div style={{ marginTop: 4, color: '#22c55e', fontSize: 11 }}>{ins.action}</div>
+                            <div style={{ marginTop: 4, color: '#8AC245', fontSize: 11 }}>{ins.action}</div>
                           </div>
                         ))}
                       </div>
@@ -248,7 +248,7 @@ export default function IntelligencePage() {
   const portfolioTab = (() => {
     if (!portfolio) return null;
     const s = portfolio.summary;
-    const subtypeColors = { scale_opportunity: '#22c55e', efficiency_concern: '#ef4444', positive_momentum: '#22c55e', negative_momentum: '#f59e0b' };
+    const subtypeColors = { scale_opportunity: '#8AC245', efficiency_concern: '#ef4444', positive_momentum: '#8AC245', negative_momentum: '#f59e0b' };
     const subtypeLabels = { scale_opportunity: 'Scale', efficiency_concern: 'Concern', positive_momentum: 'Rising', negative_momentum: 'Declining' };
     return (
       <div>
@@ -260,11 +260,11 @@ export default function IntelligencePage() {
           </div>
           <div style={{ flex: '1 1 150px', padding: '14px 16px', borderRadius: 8, background: 'var(--surface)', border: '1px solid var(--border)' }}>
             <div style={{ fontSize: 11, color: 'var(--text-dim)' }}>Avg Health Score</div>
-            <div style={{ fontSize: 22, fontWeight: 700, color: s.average_health_score >= 60 ? '#22c55e' : s.average_health_score >= 40 ? '#f59e0b' : '#ef4444' }}>{s.average_health_score || 'N/A'}</div>
+            <div style={{ fontSize: 22, fontWeight: 700, color: s.average_health_score >= 60 ? '#8AC245' : s.average_health_score >= 40 ? '#f59e0b' : '#ef4444' }}>{s.average_health_score || 'N/A'}</div>
           </div>
           <div style={{ flex: '1 1 150px', padding: '14px 16px', borderRadius: 8, background: 'var(--surface)', border: '1px solid var(--border)' }}>
             <div style={{ fontSize: 11, color: 'var(--text-dim)' }}>Healthy (65+)</div>
-            <div style={{ fontSize: 22, fontWeight: 700, color: '#22c55e' }}>{s.accounts_above_65}</div>
+            <div style={{ fontSize: 22, fontWeight: 700, color: '#8AC245' }}>{s.accounts_above_65}</div>
           </div>
           <div style={{ flex: '1 1 150px', padding: '14px 16px', borderRadius: 8, background: 'var(--surface)', border: '1px solid var(--border)' }}>
             <div style={{ fontSize: 11, color: 'var(--text-dim)' }}>At Risk (&lt;40)</div>
@@ -291,7 +291,7 @@ export default function IntelligencePage() {
                 </div>
                 <div style={{ fontSize: 14, fontWeight: 500, color: 'var(--text)', marginBottom: 4 }}>{ins.title}</div>
                 <div style={{ fontSize: 13, color: 'var(--text-dim)', lineHeight: 1.5 }}>{ins.description}</div>
-                <div style={{ fontSize: 12, color: '#22c55e', marginTop: 6 }}>{ins.action}</div>
+                <div style={{ fontSize: 12, color: '#8AC245', marginTop: 6 }}>{ins.action}</div>
               </div>
             ))}
           </div>
@@ -414,9 +414,9 @@ export default function IntelligencePage() {
         {/* Wins + Concerns */}
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 20 }}>
           <div style={{ background: 'var(--surface)', borderRadius: 10, padding: 16, border: '1px solid var(--border)' }}>
-            <div style={{ fontSize: 13, fontWeight: 700, color: '#22c55e', marginBottom: 10, display: 'flex', alignItems: 'center', gap: 6 }}>Wins</div>
+            <div style={{ fontSize: 13, fontWeight: 700, color: '#8AC245', marginBottom: 10, display: 'flex', alignItems: 'center', gap: 6 }}>Wins</div>
             {(d.wins || []).map((w, i) => (
-              <div key={'w' + i} style={{ fontSize: 13, color: 'var(--text)', marginBottom: 8, paddingLeft: 8, borderLeft: '2px solid #22c55e', lineHeight: 1.5 }}>{w}</div>
+              <div key={'w' + i} style={{ fontSize: 13, color: 'var(--text)', marginBottom: 8, paddingLeft: 8, borderLeft: '2px solid #8AC245', lineHeight: 1.5 }}>{w}</div>
             ))}
           </div>
           <div style={{ background: 'var(--surface)', borderRadius: 10, padding: 16, border: '1px solid var(--border)' }}>
@@ -440,7 +440,7 @@ export default function IntelligencePage() {
           <div style={{ background: 'var(--surface)', borderRadius: 10, padding: 16, border: '1px solid var(--border)' }}>
             <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--text)', marginBottom: 12 }}>Account Briefs</div>
             {d.account_briefs.map((ab, i) => {
-              const gc = ab.grade === 'A' ? '#22c55e' : ab.grade === 'B' ? '#84cc16' : ab.grade === 'C' ? '#f59e0b' : ab.grade === 'D' ? '#f97316' : '#ef4444';
+              const gc = ab.grade === 'A' ? '#8AC245' : ab.grade === 'B' ? '#84cc16' : ab.grade === 'C' ? '#f59e0b' : ab.grade === 'D' ? '#f97316' : '#ef4444';
               return (
                 <div key={'ab' + i} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, padding: '8px 0', borderBottom: i < d.account_briefs.length - 1 ? '1px solid var(--border)' : 'none' }}>
                   <span style={{ fontWeight: 700, fontSize: 14, color: gc, minWidth: 24 }}>{ab.grade || ''}</span>

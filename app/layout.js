@@ -1,11 +1,12 @@
-import { Inter } from "next/font/google";
+import { Urbanist } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
 import "./globals.css";
 
-const inter = Inter({
+const urbanist = Urbanist({
   subsets: ["latin"],
-  variable: "--font-inter",
+  weight: ['400', '500', '600', '700', '900'],
+  variable: "--font-urbanist",
 });
 
 export const metadata = {
@@ -17,7 +18,10 @@ export default function RootLayout({ children }) {
   return (
     <ClerkProvider appearance={{ baseTheme: dark }}>
       <html lang="en">
-        <body className={`${inter.className}`}>{children}</body>
+        <head>
+          <link rel="icon" href="https://streben.io/wp-content/uploads/2025/01/Isotipo-Streben-Green-Blue.png" />
+        </head>
+        <body className={`${urbanist.className}`}>{children}</body>
       </html>
     </ClerkProvider>
   );

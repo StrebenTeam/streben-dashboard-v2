@@ -77,10 +77,10 @@ export default function PipelinePage({ onSelectLocation }) {
             <XAxis type="number" stroke="#8b8fa3" fontSize={11} />
             <YAxis type="category" dataKey="name" stroke="#8b8fa3" fontSize={10} />
             <Tooltip contentStyle={tooltipStyle} />
-            <Bar dataKey="New Lead" fill="#6366f1" name="New Lead" />
+            <Bar dataKey="New Lead" fill="#6EC1E4" name="New Lead" />
             <Bar dataKey="Contacted" fill="#3b82f6" name="Contacted" />
             <Bar dataKey="Opportunity" fill="#eab308" name="Opportunity" />
-            <Bar dataKey="Booked" fill="#22c55e" name="Booked" />
+            <Bar dataKey="Booked" fill="#8AC245" name="Booked" />
             <Bar dataKey="Closed" fill="#a855f7" name="Closed" />
           </BarChart>
         </ResponsiveContainer>

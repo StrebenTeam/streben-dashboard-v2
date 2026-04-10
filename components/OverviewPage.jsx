@@ -257,7 +257,7 @@ export default function OverviewPage({ data, ghlData, accountGroups, metaOvervie
               <th>Meta Leads</th>
               <th>CPA</th>
               <th>Search IS</th>
-              <th style={{ borderLeft: '2px solid #6366f1' }}>CRM Leads</th>
+              <th style={{ borderLeft: '2px solid #6EC1E4' }}>CRM Leads</th>
               <th>Booked</th>
             </tr>
           </thead>
@@ -271,7 +271,7 @@ export default function OverviewPage({ data, ghlData, accountGroups, metaOvervie
                 : 'Google';
               const platformColor = row.platform === 'meta' ? '#3b82f6'
                 : row.platform === 'google+meta' ? '#a855f7'
-                : '#22c55e';
+                : '#8AC245';
 
               const clickHandler = row.type === 'group'
                 ? () => onSelectGroup(row.groupId)
@@ -299,7 +299,7 @@ export default function OverviewPage({ data, ghlData, accountGroups, metaOvervie
                   <td>{row.metaLeads > 0 ? fmt(row.metaLeads) : '\u2014'}</td>
                   <td>{aCpa != null ? fmtCurrency(aCpa) : '\u2014'}</td>
                   <td>{row.search_impression_share != null ? fmtPct(row.search_impression_share) : '\u2014'}</td>
-                  <td style={{ borderLeft: '2px solid #6366f1' }}>{fmt(row.adLeads)}</td>
+                  <td style={{ borderLeft: '2px solid #6EC1E4' }}>{fmt(row.adLeads)}</td>
                   <td>{fmt(row.booked)}</td>
                 </tr>
               );

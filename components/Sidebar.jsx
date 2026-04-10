@@ -3,19 +3,26 @@
 export default function Sidebar({ view, selectedAccount, selectedGroup, selectedMetaAccount, accountGroups, sidebarAccounts, platformMap, metaOverview, onNavigate }) {
   return (
     <div className="sidebar">
-      <div className="sidebar-logo">Streben</div>
+      <div className="sidebar-logo" style={{ padding: '0 24px', marginBottom: 24 }}>
+        <img
+          src="https://streben.io/wp-content/uploads/2025/01/Streben-logo-final-03-1_edited.avif"
+          alt="Streben"
+          style={{ height: 32 }}
+        />
+      </div>
+      <div style={{ borderBottom: '1px solid rgba(255,255,255,0.06)', marginBottom: 8 }} />
       <div className="sidebar-section">Views</div>
       <div
         className={'sidebar-item' + (view === 'overview' ? ' active' : '')}
         onClick={() => onNavigate('overview')}
       >
-        {'\uD83D\uDCCA'} Overview
+        Overview
       </div>
       <div
         className={'sidebar-item' + (view === 'intelligence' ? ' active' : '')}
         onClick={() => onNavigate('intelligence')}
       >
-        {'\uD83E\uDDE0'} Intelligence
+        Intelligence
       </div>
       <div className="sidebar-section" style={{ marginTop: 16 }}>CRM / Leads</div>
       <div

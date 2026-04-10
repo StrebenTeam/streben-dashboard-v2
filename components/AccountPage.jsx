@@ -97,7 +97,7 @@ export default function AccountPage({ accountId, ghlData, platformMap, onBack })
                   <XAxis dataKey="week" stroke="#8b8fa3" fontSize={11} />
                   <YAxis stroke="#8b8fa3" fontSize={11} />
                   <Tooltip contentStyle={tooltipStyle} />
-                  <Bar dataKey="spend" fill="#6366f1" radius={[4, 4, 0, 0]} />
+                  <Bar dataKey="spend" fill="#6EC1E4" radius={[4, 4, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -110,7 +110,7 @@ export default function AccountPage({ accountId, ghlData, platformMap, onBack })
                   <YAxis yAxisId="left" stroke="#8b8fa3" fontSize={11} />
                   <YAxis yAxisId="right" orientation="right" stroke="#8b8fa3" fontSize={11} />
                   <Tooltip contentStyle={tooltipStyle} />
-                  <Line yAxisId="left" type="monotone" dataKey="conversions" stroke="#22c55e" strokeWidth={2} dot={{ r: 3 }} />
+                  <Line yAxisId="left" type="monotone" dataKey="conversions" stroke="#8AC245" strokeWidth={2} dot={{ r: 3 }} />
                   <Line yAxisId="right" type="monotone" dataKey="cpa" stroke="#f97316" strokeWidth={2} dot={{ r: 3 }} />
                 </LineChart>
               </ResponsiveContainer>
@@ -202,7 +202,7 @@ export default function AccountPage({ accountId, ghlData, platformMap, onBack })
                     <YAxis yAxisId="left" stroke="#8b8fa3" fontSize={11} />
                     <YAxis yAxisId="right" orientation="right" stroke="#8b8fa3" fontSize={11} />
                     <Tooltip contentStyle={tooltipStyle} />
-                    <Line yAxisId="left" type="monotone" dataKey="leads" stroke="#22c55e" strokeWidth={2} dot={{ r: 3 }} />
+                    <Line yAxisId="left" type="monotone" dataKey="leads" stroke="#8AC245" strokeWidth={2} dot={{ r: 3 }} />
                     <Line yAxisId="right" type="monotone" dataKey="cpl" stroke="#f97316" strokeWidth={2} dot={{ r: 3 }} />
                   </LineChart>
                 </ResponsiveContainer>
@@ -228,7 +228,7 @@ export default function AccountPage({ accountId, ghlData, platformMap, onBack })
                     <tbody>
                       {mCamps.map(c => {
                         const cCtr = c.impressions > 0 ? (c.clicks / c.impressions * 100).toFixed(2) + '%' : 'N/A';
-                        const statusColor = c.campaign_status === 'ACTIVE' ? '#22c55e' : '#8b8fa3';
+                        const statusColor = c.campaign_status === 'ACTIVE' ? '#8AC245' : '#8b8fa3';
                         return (
                           <tr key={c.campaign_id}>
                             <td>{c.campaign_name}</td>

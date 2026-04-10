@@ -87,7 +87,7 @@ export default function LeadSourcesPage({ onSelectLocation }) {
             <YAxis type="category" dataKey="name" stroke="#8b8fa3" fontSize={10} />
             <Tooltip contentStyle={tooltipStyle} />
             <Bar dataKey="google" stackId="a" fill="#3b82f6" name="Google Ads" />
-            <Bar dataKey="organic" stackId="a" fill="#22c55e" name="Organic" />
+            <Bar dataKey="organic" stackId="a" fill="#8AC245" name="Organic" />
             <Bar dataKey="direct" stackId="a" fill="#f97316" name="Direct" />
             <Bar dataKey="referral" stackId="a" fill="#a855f7" name="Referral" />
             <Bar dataKey="paid-search" stackId="a" fill="#eab308" name="Paid Search" />
