@@ -183,11 +183,13 @@ export default function Dashboard() {
         {view === 'intelligence' && <IntelligencePage />}
         {view === 'leads' && (
           <LeadSourcesPage
+            selectedRange={selectedRange}
             onSelectLocation={(id) => navTo('ghl-location', { locationId: id })}
           />
         )}
         {view === 'pipeline' && (
           <PipelinePage
+            selectedRange={selectedRange}
             onSelectLocation={(id) => navTo('ghl-location', { locationId: id })}
           />
         )}
