@@ -1,0 +1,137 @@
+{
+  "agency": {
+    "apiKey": "pit-4fdcfbdb-08d7-40c9-bc56-550563f054f6",
+    "companyId": "0-426-785"
+  },
+  "locations": [
+    {
+      "ghlLocationId": "q8uOLBFRSmnUO4oBfGjx",
+      "ghlLocationName": "Push Fitness Club of College Point",
+      "ghlToken": "pit-00c0f3a4-7e3c-4530-9530-91ee1bd8c6c2",
+      "googleAdsAccountId": "7302638252",
+      "googleAdsAccountName": "Push Fitness Club of College Point",
+      "metaAccountId": "act_3120842627987212",
+      "metaAccountName": "Push College Point",
+      "adPlatform": "google+meta",
+      "vertical": "fitness"
+    },
+    {
+      "ghlLocationId": "k5W8wVDbnQiI0zNsVyI9",
+      "ghlLocationName": "Push Fitness Club of Melville",
+      "ghlToken": "pit-6121b2b4-a987-4365-a192-5d4a2d8222eb",
+      "googleAdsAccountId": "1770197758",
+      "googleAdsAccountName": "Push Fitness Club of Melville",
+      "metaAccountId": "act_293133947",
+      "metaAccountName": "Push Melville",
+      "adPlatform": "google+meta",
+      "vertical": "fitness"
+    },
+    {
+      "ghlLocationId": "UbHYAPbQEIZ4RK6dxjBO",
+      "ghlLocationName": "Push Fitness Club of Fresh Meadows",
+      "ghlToken": "pit-3d60b878-6700-46f0-8380-b7a5e3ccf8ea",
+      "googleAdsAccountId": "8069761184",
+      "googleAdsAccountName": "Push Fitness Club of Fresh Meadows",
+      "metaAccountId": "act_419159375365826",
+      "metaAccountName": "Push Fresh Meadows",
+      "adPlatform": "google+meta",
+      "vertical": "fitness"
+    },
+    {
+      "ghlLocationId": "jVl7S7QxGL8WqYeHq6Qq",
+      "ghlLocationName": "Push Fitness Club of New Hyde Park",
+      "ghlToken": "pit-19d0fbfa-69b6-42e1-9155-5eb00e814065",
+      "googleAdsAccountId": "8948630925",
+      "googleAdsAccountName": "Push Fitness Club of New Hyde Park",
+      "adPlatform": "google",
+      "vertical": "fitness"
+    },
+    {
+      "ghlLocationId": "4fSjdp1euql8E4RUdzwh",
+      "ghlLocationName": "Fox Trail Memory Care",
+      "ghlToken": "pit-8f611263-ab8b-44ad-8371-48e0d7a279c8",
+      "googleAdsAccountId": "3277757841",
+      "googleAdsAccountName": "Fox Trail Memory Care",
+      "metaAccountId": "act_1204782481094217",
+      "metaAccountName": "Fox Trail",
+      "adPlatform": "google+meta",
+      "vertical": "senior_living"
+    },
+    {
+      "ghlLocationId": "dXLkIk3ttbdaR5hCuhhY",
+      "ghlLocationName": "Thrivewell Infusion",
+      "ghlToken": "pit-04784af1-f62d-4016-9105-d1d40eb0133d",
+      "metaAccountId": "act_119697500968309",
+      "metaAccountName": "Thrivewell Infusion",
+      "adPlatform": "meta",
+      "skipGhl": false,
+      "vertical": "healthcare"
+    },
+    {
+      "ghlLocationId": "EbWCJvqTLGGhueWC1mj0",
+      "ghlLocationName": "The Brielle at Seaview",
+      "ghlToken": "",
+      "googleAdsAccountId": "5448129072",
+      "googleAdsAccountName": "The Brielle at Seaview",
+      "metaAccountId": "act_1695589794759626",
+      "metaAccountName": "The Brielle",
+      "adPlatform": "google+meta",
+      "vertical": "senior_living",
+      "skipGhl": true
+    },
+    {
+      "ghlLocationId": "fdBY19jHnQjgXT4yJA2y",
+      "ghlLocationName": "Just Like Home",
+      "ghlToken": "pit-2451fe60-f520-4ccb-bc43-d7a7ac3e3d8c",
+      "googleAdsAccountId": "1805252082",
+      "googleAdsAccountName": "Just Like Home",
+      "adPlatform": "google",
+      "vertical": "senior_living"
+    },
+    {
+      "ghlLocationId": "1c6B5aAcfzjezHa0wTw5",
+      "ghlLocationName": "Future Care Internal Medicine",
+      "ghlToken": "pit-ed85c6f1-a9cd-4162-ad0e-dc11b2a54bcc",
+      "googleAdsAccountId": "8525844154",
+      "googleAdsAccountName": "Future Care Internal Medicine",
+      "adPlatform": "google",
+      "vertical": "healthcare"
+    },
+    {
+      "ghlLocationId": "X7osZIN3QiR96ppP8D5i",
+      "ghlLocationName": "Infinite Vision",
+      "ghlToken": "pit-c5aba58d-3e75-425f-9f4d-d11bcb19b97a",
+      "googleAdsAccountId": "3554568613",
+      "googleAdsAccountName": "Infinite Vision",
+      "metaAccountId": "",
+      "metaAccountName": "",
+      "adPlatform": "google",
+      "vertical": "optometry",
+      "skipGhl": false
+    },
+    {
+      "ghlLocationId": "1yb0hQNmIyhvYw90yr5f",
+      "ghlLocationName": "Vue Optometry",
+      "ghlToken": "pit-75c7387d-f675-4b62-b560-5c2a29b5fc77",
+      "googleAdsAccountId": "8947281547",
+      "googleAdsAccountName": "Vue Optometry",
+      "metaAccountId": "",
+      "metaAccountName": "",
+      "adPlatform": "google",
+      "vertical": "optometry",
+      "skipGhl": false
+    },
+    {
+      "ghlLocationId": "jIClmdJcLatgheahgtIn",
+      "ghlLocationName": "MK Vision Center",
+      "ghlToken": "pit-d2725cbe-c446-4018-b088-842b0d62b428",
+      "googleAdsAccountId": "7107559360",
+      "googleAdsAccountName": "MK Vision Center Brooklyn",
+      "metaAccountId": "",
+      "metaAccountName": "",
+      "adPlatform": "google",
+      "vertical": "optometry",
+      "skipGhl": false
+    }
+  ]
+}
