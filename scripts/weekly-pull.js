@@ -259,10 +259,11 @@ async function loadGHL() {
     const leadData = readPullFile('ghl-leads-' + loc.id + '.json');
     if (leadData) {
       await run(
-        "INSERT OR REPLACE INTO ghl_lead_snapshots (location_id, snapshot_date, total_contacts, google_ads_leads, paid_search_leads, organic_leads, direct_leads, referral_leads, other_leads) VALUES (?,?,?,?,?,?,?,?,?)",
-        [loc.id, today, leadData.total || 0, leadData.google_ads || 0, leadData.paid_search || 0, leadData.organic || 0, leadData.direct || 0, leadData.referral || 0, leadData.other || 0]
+        "INSERT OR REPLACE INTO ghl_lead_snapshots (location_id, snapshot_date, total_contacts, google_ads_leads, paid_search_leads, organic_leads, direct_leads, referral_leads, other_leads, meta_leads) VALUES (?,?,?,?,?,?,?,?,?,?)",
+        [loc.id, today, leadData.total || 0, leadData.google_ads || 0, leadData.paid_search || 0, leadData.organic || 0, leadData.direct || 0, leadData.referral || 0, leadData.other || 0, leadData.meta || 0]
       );
-      console.log('    Leads: ' + (leadData.total || 0) + ' contacts');
+      const adLeads = (leadData.google_ads || 0) + (leadData.meta || 0) + (leadData.paid_search || 0);
+      console.log('    Leads: ' + (leadData.total || 0) + ' total, ' + adLeads + ' from ads (Google: ' + (leadData.google_ads || 0) + ', Meta: ' + (leadData.meta || 0) + ')');
     }
 
     const pipeData = readPullFile('ghl-pipeline-' + loc.id + '.json');
@@ -270,12 +271,34 @@ async function loadGHL() {
       const pipeStatements = [];
       for (const p of pipeData.pipelines) {
         pipeStatements.push({
-          sql: "INSERT OR REPLACE INTO ghl_pipeline_snapshots (location_id, pipeline_id, snapshot_date, new_lead, contacted, opportunity, booked, no_show, closed, bad_lead, total_value) VALUES (?,?,?,?,?,?,?,?,?,?,?)",
-          args: [loc.id, p.pipeline_id, today, p.new_lead || 0, p.contacted || 0, p.opportunity || 0, p.booked || 0, p.no_show || 0, p.closed || 0, p.bad_lead || 0, p.total_value || 0]
+          sql: `INSERT OR REPLACE INTO ghl_pipeline_snapshots (
+            location_id, pipeline_id, snapshot_date,
+            new_lead, contacted, opportunity, booked, no_show, closed, bad_lead, total_value,
+            new_lead_value, contacted_value, opportunity_count, opportunity_value,
+            booked_value, no_show_value, closed_value, bad_lead_value,
+            closed_revenue_google_ads, closed_revenue_meta, closed_revenue_paid_search,
+            closed_revenue_organic, closed_revenue_direct, closed_revenue_referral, closed_revenue_other,
+            ad_attributed_count, ad_attributed_value
+          ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
+          args: [
+            loc.id, p.pipeline_id, today,
+            p.new_lead || 0, p.contacted || 0, p.opportunity || 0, p.booked || 0,
+            p.no_show || 0, p.closed || 0, p.bad_lead || 0, p.total_value || 0,
+            p.new_lead_value || 0, p.contacted_value || 0, p.opportunity || 0, p.opportunity_value || 0,
+            p.booked_value || 0, p.no_show_value || 0, p.closed_value || 0, p.bad_lead_value || 0,
+            p.closed_revenue_google_ads || 0, p.closed_revenue_meta || 0, p.closed_revenue_paid_search || 0,
+            p.closed_revenue_organic || 0, p.closed_revenue_direct || 0, p.closed_revenue_referral || 0,
+            p.closed_revenue_other || 0,
+            p.ad_attributed_count || 0, p.ad_attributed_value || 0,
+          ]
         });
       }
       if (pipeStatements.length > 0) await runBatch(pipeStatements);
-      console.log('    Pipelines: ' + pipeData.pipelines.length);
+      for (const p of pipeData.pipelines) {
+        const adRevenue = (p.closed_revenue_google_ads || 0) + (p.closed_revenue_meta || 0) + (p.closed_revenue_paid_search || 0);
+        console.log('    Pipeline "' + (p.pipeline_name || p.pipeline_id) + '": ' + (p.total_opportunities || 0) + ' opps, $' + (p.total_value || 0).toFixed(2));
+        console.log('      Closed: ' + (p.closed || 0) + ' ($' + (p.closed_value || 0).toFixed(2) + ') | Ad revenue: $' + adRevenue.toFixed(2));
+      }
       loaded++;
     } else {
       if (leadData) loaded++;
